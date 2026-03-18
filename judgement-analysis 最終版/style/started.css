@@ -1,0 +1,318 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+body header nav {
+  display: flex;
+  background-color: black;
+  color: white;
+  height: 80px;
+}
+body header nav div.leftbar {
+  display: flex;
+  width: 70%;
+}
+body header nav div.leftbar img {
+  width: 10rem;
+}
+body header nav div.leftbar ul {
+  display: flex;
+  padding-left: 5rem;
+  align-items: center;
+  list-style-type: none;
+}
+body header nav div.leftbar ul li {
+  margin: 0.5rem;
+  padding: 1rem;
+}
+body header nav div.leftbar ul li a {
+  text-decoration: none;
+  color: rgba(247, 247, 247, 0.79);
+  font-weight: 900;
+}
+body header nav div.leftbar ul li a:hover {
+  color: rgb(219, 219, 17);
+}
+body header nav div.rightbar {
+  position: relative;
+  align-items: center;
+  display: flex;
+  width: 30%;
+}
+body header nav div.rightbar a {
+  border-radius: 25px;
+  margin: 0rem 0.5rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+}
+body header nav div.rightbar a:hover {
+  transform: scale(1.1);
+}
+body header nav div.rightbar a.left {
+  position: absolute;
+  right: 10rem;
+  background-color: white;
+  color: black;
+}
+body header nav div.rightbar a.right {
+  position: absolute;
+  right: 5rem;
+  color: rgba(255, 255, 255, 0.796);
+  background: linear-gradient(to right, rgb(69, 173, 228), rgb(26, 71, 108));
+}
+body main div.animation3 {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 88vh;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  top: 5rem;
+}
+body main div.slider-knowlage {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  z-index: 20;
+  left: 11rem;
+  top: 0;
+  width: 80%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 3rem;
+  animation: InFromBottom 0.5s ease-in-out;
+  align-items: center;
+  text-align: center;
+}
+body main div.slider-knowlage button.close {
+  position: absolute;
+  right: 1rem;
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 50px;
+  color: black;
+  transform: 0.5s;
+}
+body main div.slider-knowlage button.close:hover {
+  transform: scale(1.1);
+}
+body main div.slider-knowlage h1.know-title {
+  font-weight: 900;
+  margin-top: 6rem;
+  margin-bottom: 0.5rem;
+  font-size: 50px;
+}
+body main div.slider-knowlage h2.know-subtitle {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 0.5rem;
+}
+body main div.slider-knowlage div.search-content {
+  animation: Knowlage 0.5s ease-in-out;
+  display: none;
+  width: 600px;
+  height: 400px;
+  border: 2px solid red;
+  border-radius: 3rem;
+}
+body main div.slider-knowlage div.btn-search {
+  position: relative;
+  margin: 0.5rem 0rem;
+  width: 400px;
+  height: 40px;
+  border: none;
+  border-radius: 6rem;
+  background-color: black;
+  overflow: hidden;
+  align-items: end;
+}
+body main div.slider-knowlage div.btn-search button.search {
+  position: absolute;
+  right: 1.5rem;
+  background-color: transparent;
+  height: 40px;
+  width: 40px;
+  border: none;
+  cursor: pointer;
+}
+body main img.big {
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  z-index: -5;
+}
+body main div.main-container {
+  position: relative;
+  height: 800px;
+  text-align: center;
+}
+body main div.main-container button.back-home {
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  width: 60px;
+  height: 60px;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+body main div.main-container button.back-home:hover {
+  transform: scale(1.1);
+}
+body main div.main-container h1 {
+  font-weight: 900;
+  font-size: 50px;
+  padding: 4rem 0rem;
+  color: rgb(50, 50, 145);
+}
+body main div.main-container div.three-btn {
+  display: flex;
+  width: 100%;
+  height: 400px;
+  align-items: center;
+  justify-content: center;
+}
+body main div.main-container div.three-btn button {
+  width: 30%;
+  height: 400px;
+  border-radius: 5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  margin: 1rem;
+}
+body main div.main-container div.three-btn button:hover {
+  transform: scale(1.03);
+}
+body main div.main-container div.three-btn button img {
+  width: 100%;
+  height: 200px;
+}
+body main div.main-container div.three-btn button div.words {
+  background-color: black;
+  color: white;
+  height: 200px;
+}
+body main div.main-container div.three-btn button div.words h2 {
+  font-weight: 900;
+  margin: 0.5rem;
+}
+body main div.main-container div.three-btn button div.words p {
+  margin: 0.5rem;
+  font-size: 20px;
+}
+body footer {
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.893);
+  position: relative;
+}
+body footer div.footer-contain {
+  display: flex;
+  color: white;
+}
+body footer div.footer-contain div.footer-Logo {
+  width: 25rem;
+  height: 20rem;
+}
+body footer div.footer-contain div.about-us {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 3rem;
+  width: 30rem;
+  height: 20rem;
+}
+body footer div.footer-contain div.about-us a {
+  color: white;
+  text-decoration: none;
+  margin: 1rem;
+}
+body footer div.footer-contain div.about-us a:hover {
+  color: yellow;
+  font-weight: bold;
+}
+body footer div.footer-contain div.resources {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 3rem;
+  width: 30rem;
+  height: 20rem;
+}
+body footer div.footer-contain div.resources a {
+  color: white;
+  text-decoration: none;
+  margin: 1rem;
+}
+body footer div.footer-contain div.resources a:hover {
+  color: yellow;
+  font-weight: bold;
+}
+body footer div.footer-contain div.footer-words {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  width: 20rem;
+  height: 30px;
+  font-size: 20px;
+}
+body footer div.footer-contain div.social-links {
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  width: 20rem;
+  height: 30px;
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+}
+body footer div.footer-contain div.social-links i {
+  padding: 1rem;
+}
+
+@keyframes InFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@keyframes InFromBottom2 {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+@keyframes Knowlage {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}/*# sourceMappingURL=started.css.map */

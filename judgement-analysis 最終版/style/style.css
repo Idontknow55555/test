@@ -1,0 +1,587 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body div.animation {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+body div.slider {
+  display: none; /* 初始狀態隱藏 */
+  position: fixed;
+  z-index: 5000;
+  left: 24rem;
+  top: 5rem;
+  width: 55%;
+  height: 86vh;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 3rem;
+  animation: fadeInFromBottom 0.5s ease-in-out;
+}
+body div.slider div.login-img img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+body div.slider div.login-img {
+  width: 45%;
+  height: 86vh;
+  display: flex;
+  position: relative;
+  /* border: 2px solid red; */
+  flex: 1;
+  min-width: 0;
+}
+body div.slider div.login-content {
+  width: 55%;
+  height: 86vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-color: black;
+  padding: 2rem;
+  box-sizing: border-box;
+  flex: 1;
+  min-width: 0;
+}
+body div.slider div.login-content button.close-button {
+  display: flex;
+  position: absolute;
+  right: 1rem;
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  font-size: 50px;
+  color: white;
+  transform: 0.5s;
+}
+body div.slider div.login-content button.close-button:hover {
+  transform: scale(1.1);
+}
+body div.slider div.login-content div.title {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+body div.slider div.login-content div.title h1 {
+  margin-top: 6rem;
+  color: white;
+  font-weight: 900;
+  width: 100%;
+}
+body div.slider div.login-content div.title div.title-2 {
+  display: flex;
+  align-items: center;
+  margin-top: 10rem;
+}
+body div.slider div.login-content div.title div.title-2 h5 {
+  color: white;
+  font-weight: bold;
+}
+body div.slider div.login-content div.title div.title-2 button.set-acc {
+  color: white;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+body div.slider div.login-content div.title div.title-2 button.set-acc:hover {
+  color: yellow;
+  font-weight: 900;
+}
+body div.slider div.login-content form {
+  position: absolute;
+  top: 15rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  align-items: center;
+}
+
+body div.slider div.login-content form p {
+  color: white;
+  font-weight: 900;
+  margin-right: 20rem;
+}
+body div.slider div.login-content form input {
+  font-weight: bold;
+  background-color: white;
+  margin: 1rem 0rem;
+  width: 400px;
+  height: 40px;
+  border: none;
+  border-radius: 6rem;
+  display: flex;
+  padding-left: 20px;
+}
+body div.slider div.login-content form button {
+  margin-top: 1rem;
+  width: 400px;
+  height: 40px;
+  border: none;
+  border-radius: 6rem;
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(to right, black, purple);
+}
+body div.slider div.login-content form button:hover {
+  transform: scale(1.05);
+}
+body div.slider div.login-content div.or {
+  text-align: center;
+  position: absolute;
+  bottom: 10rem;
+  width: 100%;
+  height: 20px;
+  color: white;
+}
+body div.slider div.login-content div.icon-google {
+  width: 50px;
+  height: 50px;
+  border-radius: 30%;
+  position: absolute;
+  bottom: 6rem;
+  left: 12rem;
+  background-color: white;
+  cursor: pointer;
+  transform: 0.5s;
+}
+body div.slider div.login-content div.icon-google i {
+  margin-top: 1.5rem;
+  margin-left: 0.8rem;
+}
+body div.slider div.login-content div.icon-google i:hover {
+  transform: scale(1.1);
+}
+body div.slider div.login-content div.icon-facebook {
+  width: 50px;
+  height: 50px;
+  border-radius: 30%;
+  position: absolute;
+  bottom: 6rem;
+  right: 12rem;
+  background-color: white;
+  cursor: pointer;
+  transform: 0.5s;
+}
+body div.slider div.login-content div.icon-facebook i {
+  margin-top: 1.5rem;
+  margin-left: 0.8rem;
+}
+body div.slider div.login-content div.icon-facebook i:hover {
+  transform: scale(1.1);
+}
+body div.slider2 {
+  display: none; /* 初始狀態隱藏 */
+  position: fixed;
+  z-index: 1000;
+  left: 24rem;
+  top: 5rem;
+  width: 55%;
+  height: 86vh;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 3rem;
+  animation: fadeInFromBottom2 0.5s ease-in-out;
+}
+body div.slider2 div.set-img {
+  width: 45%;
+  height: 86vh;
+  position: relative;
+  display: flex;
+  /* border: 2px solid red; */
+}
+body div.slider2 div.set-content {
+  width: 55%;
+  height: 86vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-color: black;
+}
+body div.slider2 div.set-img button.close-button2 {
+  position: absolute;
+  right: 1rem;
+  height: 50px;
+  width: 50px;
+  background-color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  font-size: 50px;
+  color: white;
+  transform: 0.5s;
+}
+body div.slider2 div.set-img button.close-button2:hover {
+  transform: scale(1.1);
+}
+body div.slider2 div.set-content div.title {
+  position: relative;
+  text-align: center;
+}
+body div.slider2 div.set-content div.title h1 {
+  margin-top: 3rem;
+  color: white;
+  font-weight: 900;
+  width: 300px;
+}
+body div.slider2 div.set-content div.title div.title-2 {
+  display: flex;
+  margin-top: 7.5rem;
+}
+body div.slider2 div.set-content div.title div.title-2 h5 {
+  color: white;
+  font-weight: bold;
+}
+body div.slider2 div.set-content div.title div.title-2 button.log-acc {
+  color: white;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+body div.slider2 div.set-content div.title div.title-2 button.log-acc:hover {
+  color: yellow;
+  font-weight: 900;
+}
+body div.slider2 div.set-content form {
+  position: absolute;
+  top: 10rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+@media screen and (max-width: 1460px) {
+  form {
+    display: block;
+    width: 200px;
+  }
+}
+body div.slider2 div.set-content form p {
+  color: white;
+  font-weight: 900;
+  margin-right: 18rem;
+}
+body div.slider2 div.set-content form input {
+  font-weight: bold;
+  background-color: white;
+  margin: 1rem 0rem;
+  width: 400px;
+  height: 40px;
+  border: none;
+  border-radius: 6rem;
+  display: flex;
+  padding-left: 20px;
+}
+body div.slider2 div.set-content form button {
+  margin-top: 1rem;
+  width: 400px;
+  height: 40px;
+  border: none;
+  border-radius: 6rem;
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(to right, black, purple);
+}
+body div.slider2 div.set-content form button:hover {
+  transform: scale(1.05);
+}
+body div.slider2 div.set-content div.or {
+  text-align: center;
+  position: absolute;
+  bottom: 10rem;
+  width: 100%;
+  height: 20px;
+  color: white;
+}
+body div.slider2 div.set-content div.icon-google {
+  width: 50px;
+  height: 50px;
+  border-radius: 30%;
+  position: absolute;
+  bottom: 6rem;
+  left: 12rem;
+  background-color: white;
+  cursor: pointer;
+  transform: 0.5s;
+}
+body div.slider2 div.set-content div.icon-google i {
+  margin-top: 1.5rem;
+  margin-left: 0.8rem;
+}
+body div.slider2 div.set-content div.icon-google i:hover {
+  transform: scale(1.1);
+}
+body div.slider2 div.set-content div.icon-facebook {
+  width: 50px;
+  height: 50px;
+  border-radius: 30%;
+  position: absolute;
+  bottom: 6rem;
+  right: 12rem;
+  background-color: white;
+  cursor: pointer;
+  transform: 0.5s;
+}
+body div.slider2 div.set-content div.icon-facebook i {
+  margin-top: 1.5rem;
+  margin-left: 0.8rem;
+}
+body div.slider2 div.set-content div.icon-facebook i:hover {
+  transform: scale(1.1);
+}
+body header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+body header nav {
+  display: flex;
+  background-color: black;
+  color: white;
+  height: 80px;
+}
+body header nav div.leftbar {
+  display: flex;
+  width: 70%;
+}
+body header nav div.leftbar img {
+  width: 10rem;
+}
+body header nav div.leftbar ul {
+  display: flex;
+  padding-left: 5rem;
+  align-items: center;
+  list-style-type: none;
+}
+body header nav div.leftbar ul li {
+  margin: 0.5rem;
+  padding: 1rem;
+}
+body header nav div.leftbar ul li a {
+  text-decoration: none;
+  color: rgba(247, 247, 247, 0.79);
+  font-weight: 900;
+}
+body header nav div.leftbar ul li a:hover {
+  color: rgb(219, 219, 17);
+}
+body header nav div.rightbar {
+  position: relative;
+  align-items: center;
+  display: flex;
+  width: 30%;
+}
+body header nav div.rightbar a {
+  border-radius: 25px;
+  margin: 0rem 0.5rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+}
+body header nav div.rightbar a:hover {
+  transform: scale(1.1);
+}
+body header nav div.rightbar a.left {
+  position: absolute;
+  right: 10rem;
+  background-color: white;
+  color: black;
+}
+body header nav div.rightbar a.right {
+  position: absolute;
+  right: 5rem;
+  color: rgba(255, 255, 255, 0.796);
+  background: linear-gradient(to right, black, purple);
+}
+body main img.big {
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  z-index: -5;
+}
+body main section.container-main {
+  display: flex;
+  width: 1520px;
+  height: 620px;
+}
+body main section.container-main div.contain-left {
+  display: flex;
+  width: 50%;
+  height: 80%;
+  padding-top: 20rem;
+  align-items: center;
+  justify-content: center;
+}
+body main section.container-main div.contain-left div.contain h1 {
+  font-size: 50px;
+  font-weight: 900;
+}
+body main section.container-main div.contain-left div.contain div.button {
+  width: 400px;
+  height: 300px;
+  padding-top: 2.5rem;
+}
+body main section.container-main div.contain-left div.contain div.button a {
+  display: inline-block;
+  border: none;
+  padding: 0.8rem 4rem;
+  border-radius: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  transform: 0.5s;
+  color: rgba(255, 255, 255, 0.879);
+  background: linear-gradient(to right, rgb(69, 173, 228), rgb(26, 71, 108));
+}
+body
+  main
+  section.container-main
+  div.contain-left
+  div.contain
+  div.button
+  a:hover {
+  background: linear-gradient(to right, rgb(26, 71, 108), rgb(69, 173, 228));
+  transform: scale(1.1);
+}
+body main section.container-main div.contain-right {
+  width: 50%;
+  height: 80%;
+  padding-top: 3rem;
+  padding-left: 5rem;
+}
+body footer {
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.893);
+  position: relative;
+}
+body footer div.footer-contain {
+  display: flex;
+  color: white;
+}
+body footer div.footer-contain div.footer-Logo {
+  width: 25rem;
+  height: 20rem;
+}
+body footer div.footer-contain div.about-us {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 3rem;
+  width: 30rem;
+  height: 20rem;
+}
+body footer div.footer-contain div.about-us a {
+  color: white;
+  text-decoration: none;
+  margin: 1rem;
+}
+body footer div.footer-contain div.about-us a:hover {
+  color: yellow;
+  font-weight: bold;
+}
+body footer div.footer-contain div.resources {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 3rem;
+  width: 30rem;
+  height: 20rem;
+}
+body footer div.footer-contain div.resources a {
+  color: white;
+  text-decoration: none;
+  margin: 1rem;
+}
+body footer div.footer-contain div.resources a:hover {
+  color: yellow;
+  font-weight: bold;
+}
+body footer div.footer-contain div.footer-words {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  width: 20rem;
+  height: 30px;
+  font-size: 20px;
+}
+body footer div.footer-contain div.social-links {
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  width: 20rem;
+  height: 30px;
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+}
+body footer div.footer-contain div.social-links i {
+  padding: 1rem;
+}
+
+/* 登陸滑入 */
+@keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+/* 登陸滑出 */
+@keyframes fadeInFromBottom-1 {
+  from {
+    opacity: 0;
+    transform: translateY(0%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(100%);
+  }
+}
+/* 註冊滑入 */
+@keyframes fadeInFromBottom2 {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+/* 註冊滑出 */
+@keyframes fadeInFromBottom2-1 {
+  from {
+    opacity: 0;
+    transform: translateX(0%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+}
