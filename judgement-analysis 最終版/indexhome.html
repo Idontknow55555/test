@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>判決書分析比對系統-首頁</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Webflow" name="generator" />
+
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="images/webclip.png" rel="apple-touch-icon" />
+
+    <link rel="stylesheet" href="./css/jin-beng-zhuan-ti.webflow.css" />
+
+    <link rel="stylesheet" href="./style/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body class="body">
+    <div class="header">
+        <a href="#" class="back-button" onclick="history.back()">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon"
+          >
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </a>
+        <div class="header-title">歡迎使用分析比對系統，請選擇輸入模式</div>
+      </div>
+    <div class="animation"></div>
+    <!-- 登入介面 -->
+    <div class="slider">
+      <div class="login-img">
+        <img src="./images/logimage_0.jpg" alt="登入圖片" />
+      </div>
+      <div class="login-content">
+        <button class="close-button">×</button>
+        <div class="title">
+          <h1 class="login-title">登錄您的帳戶</h1>
+          <div class="title-2">
+            <h5 class="login-subtitle">沒有帳號密碼 ?</h5>
+            <button class="set-acc">註冊</button>
+          </div>
+        </div>
+        <form id="loginForm">
+          <p class="email">電子信箱</p>
+          <input
+            type="email"
+            class="email"
+            name="email"
+            placeholder="   Ex: abc123456@gmail.com"
+            required
+          />
+          <p class="password">密碼</p>
+          <input
+            type="password"
+            class="password"
+            name="password"
+            placeholder="   密碼"
+            required
+          />
+          <br />
+          <button type="submit">登錄</button>
+        </form>
+      </div>
+    </div>
+    <div class="slider2">
+      <div class="set-content">
+        <div class="title">
+          <h1 class="login-title">創建您的帳戶</h1>
+          <div class="title-2">
+            <h5 class="login-subtitle">已經有帳號密碼 ?</h5>
+            <button class="log-acc">登錄</button>
+          </div>
+        </div>
+        <form id="registerForm">
+          <p class="username">使用者名稱</p>
+          <input
+            type="text"
+            class="username"
+            name="username"
+            placeholder="   輸入使用者名稱"
+          />
+          <p class="email">電子信箱</p>
+          <input
+            type="email"
+            class="email"
+            name="email"
+            placeholder="   Ex: abc123456@.gmail.com"
+          />
+          <p class="password">密碼</p>
+          <input
+            type="password"
+            class="password"
+            name="password"
+            placeholder="   設定密碼"
+          />
+          <br />
+          <button type="submit">註冊</button>
+        </form>
+      </div>
+      <div class="set-img">
+        <button class="close-button2">×</button>
+        <img src="./images/signimage_0.png" alt="註冊圖片" />
+      </div>
+    </div>
+    <div class="navbar-no-shadow">
+      <div
+        data-animation="default"
+        data-collapse="medium"
+        data-duration="400"
+        data-easing="ease"
+        data-easing2="ease"
+        role="banner"
+        class="navbar-no-shadow-container w-nav"
+      >
+        <div class="container-for-hero">
+          <div class="navbar-wrapper">
+            <a
+              href="homepage.html"
+              aria-current="page"
+              class="navbar-brand w-nav-brand w--current"
+              ><img
+                class="image-container"
+                src="images/Frame_1-removebg-preview.png"
+                loading="lazy"
+                width="78"
+                sizes="78px"
+                alt=""
+                srcset="
+                  images/Frame_1-removebg-preview-p-500.png 500w,
+                  images/Frame_1-removebg-preview.png       560w
+                "
+            /></a>
+            <link rel="prefetch" href="/" />
+            <nav role="navigation" class="nav-menu-wrapper w-nav-menu">
+              <ul role="list" class="nav-menu w-list-unstyled">
+                <li>
+                  <a href="homepage.html" class="nav-link">HOME</a>
+                </li>
+                <li>
+                  <a href="law-libary.html" class="nav-link">LAWLIBRARY</a>
+                </li>
+                <li>
+                  <a href="indexhome.html" class="nav-link">ANALYZE</a>
+                </li>
+                <li>
+                  <div class="nav-button-wrapper">
+                    <a
+                      id="login-button"
+                      data-w-id="c6a32ba5-d06d-e038-b05c-54773a0ae84a"
+                      href="#"
+                      class="button-primary sing-up w-button left"
+                      >Login</a
+                    >
+
+                    <a
+                      id="signup-button"
+                      href="#"
+                      class="button-primary login w-button right"
+                      >Sign up</a
+                    >
+
+                    <div id="user-info" class="user-info" style="display: none">
+                      <div id="user-name" class="user-name"></div>
+                      <div
+                        id="user-avatar"
+                        class="user-avatar"
+                        onclick="toggleDropdown()"
+                      ></div>
+                    </div>
+                    <div id="dropdown-menu" class="dropdown-menu">
+                      <div id="dropdown-header" class="dropdown-header"></div>
+                      <a
+                        href="#"
+                        id="accountSettingButton"
+                        class="dropdown-item"
+                      >
+                        <img
+                          src="setting.png"
+                          alt="Settings Icon"
+                          class="dropdown-icon"
+                        />帳號設定
+                      </a>
+                      <a href="#" id="historyButton" class="dropdown-item">
+                        <img
+                          src="history.png"
+                          alt="History Icon"
+                          class="dropdown-icon"
+                        />歷史紀錄
+                      </a>
+                      <a
+                        href="#"
+                        id="switchAccountButton"
+                        class="dropdown-item"
+                      >
+                        <img
+                          src="switch-account.png"
+                          alt="Switch Icon"
+                          class="dropdown-icon"
+                        />切換帳戶
+                      </a>
+                      <a href="#" id="logout-button" class="dropdown-item">
+                        <img
+                          src="log-out.png"
+                          alt="Logout Icon"
+                          class="dropdown-icon"
+                        />登出
+                      </a>
+                    </div>
+                    <div id="overlay" class="overlay"></div>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="button-container">
+        <div class="mode-left-section">
+        <div class="mode-box" onclick="location.href='index.html'">
+          <img src="balance.png" alt="單一文字或文件" class="button-icon" />
+          <p>單一文字或文件</p>
+          <p class="English">Enter a text case content or upload a PDF file.</p>
+        </div>
+        </div>
+
+        <div class="separator">
+          <span>OR</span>
+        </div>
+
+        <div class="mode-right-section">
+        <div class="mode-box" onclick="location.href='dualindex.html'">
+          <img src="comparison.png" alt="雙重文字或文件" class="button-icon" />
+          <p>雙重文字或文件</p>
+          <p class="English">Enter two text case contents or upload two PDF files.</p>
+        </div>
+        </div>
+    </div>      
+    <section class="footer-subscribe">
+      <div class="container-2">
+        <div class="footer-wrapper-three">
+          <div class="footer-block-three">
+            <a href="#" class="footer-link-three">About us</a>
+            <a href="#" class="footer-link-three">Project Detail</a>
+          </div>
+          <div class="footer-social-block-three">
+            <a href="#" class="footer-social-link-three w-inline-block"
+              ><img
+                src="https://uploads-ssl.webflow.com/62434fa732124a0fb112aab4/62434fa732124a705912aaeb_facebook%20big%20filled.svg"
+                loading="lazy"
+                alt=""
+                class="image-2"
+            /></a>
+            <a href="#" class="footer-social-link-three w-inline-block"
+              ><img
+                src="https://uploads-ssl.webflow.com/62434fa732124a0fb112aab4/62434fa732124ab37a12aaf0_twitter%20big.svg"
+                loading="lazy"
+                alt=""
+            /></a>
+            <a href="#" class="footer-social-link-three w-inline-block"
+              ><img
+                src="https://uploads-ssl.webflow.com/62434fa732124a0fb112aab4/62434fa732124a61f512aaed_instagram%20big.svg"
+                loading="lazy"
+                alt=""
+            /></a>
+            <a href="https://youtu.be/9Bft-Sq4ZgY" class="footer-social-link-three w-inline-block"
+              ><img
+                src="https://uploads-ssl.webflow.com/62434fa732124a0fb112aab4/62434fa732124a717f12aaea_youtube%20small.svg"
+                loading="lazy"
+                alt=""
+            /></a>
+          </div>
+        </div>
+        <div class="footer-divider-two"></div>
+        <div class="footer-bottom">
+          <div class="footer-copyright">
+            © 2024 TKUIM 4C Mr.Judger development team. All rights reserved
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      const imageContainer = document.querySelector(".image-container");
+
+      imageContainer.addEventListener("mouseenter", () => {
+        imageContainer.classList.add("flipped");
+      });
+
+      imageContainer.addEventListener("mouseleave", () => {
+        imageContainer.classList.remove("flipped");
+      });
+    </script>
+    <video autoplay muted loop id="video-background">
+      <source src="Abstract Colorful Motion Background.mp4" type="video/mp4" />
+    </video>
+
+    <script src="./app2.js"></script>
+
+    <script>
+      function toggleDropdown() {
+        const dropdownMenu = document.getElementById("dropdown-menu");
+        const overlay = document.getElementById("overlay");
+
+        if (dropdownMenu.classList.contains("show")) {
+          dropdownMenu.classList.remove("show");
+          dropdownMenu.classList.add("hide");
+          overlay.classList.remove("show");
+        } else {
+          dropdownMenu.classList.remove("hide");
+          dropdownMenu.classList.add("show");
+          overlay.classList.add("show");
+        }
+      }
+      document.getElementById("overlay").addEventListener("click", function () {
+        const dropdownMenu = document.getElementById("dropdown-menu");
+        const overlay = document.getElementById("overlay");
+        const userNameElement = document.getElementById("user-name");
+        dropdownMenu.classList.remove("show");
+        dropdownMenu.classList.add("hide");
+        overlay.classList.remove("show");
+        if (userNameElement) {
+          userNameElement.classList.remove("hidden");
+        }
+      });
+    </script>
+    <script>
+      window.addEventListener("load", checkLoginStatus);
+      function checkLoginStatus() {
+        console.log("Checking login status...");
+
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        console.log("isLoggedIn:", isLoggedIn);
+        console.log(
+          "User ID from localStorage:",
+          localStorage.getItem("userId")
+        );
+        const loginButton = document.getElementById("login-button");
+        const signupButton = document.getElementById("signup-button");
+        const userInfo = document.getElementById("user-info");
+        const userAvatar = document.getElementById("user-avatar");
+        const dropdownHeader = document.getElementById("dropdown-header");
+        const userNameElement = document.getElementById("user-name");
+
+        if (isLoggedIn) {
+          if (loginButton) loginButton.style.display = "none";
+          if (signupButton) signupButton.style.display = "none";
+          if (userInfo) userInfo.style.display = "block";
+
+          const userName = localStorage.getItem("userName");
+          const headshotUrl =
+            localStorage.getItem("userHeadshot") || "images/profile.png";
+          userAvatar.style.backgroundImage = `url('${headshotUrl}')`;
+          if (userNameElement) {
+            userNameElement.textContent = userName;
+            userNameElement.style.width = `${userNameElement.scrollWidth}px`;
+          }
+          if (dropdownHeader) dropdownHeader.textContent = `您好，${userName}`;
+        } else {
+          if (loginButton) loginButton.style.display = "inline-block";
+          if (signupButton) signupButton.style.display = "inline-block";
+          if (userInfo) userInfo.style.display = "none";
+          if (userAvatar) userAvatar.style.display = "none";
+        }
+      }
+    </script>
+    <script>
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const formData = new FormData(e.target);
+          const data = {
+            username: formData.get("username"),
+            email: formData.get("email"),
+            password: formData.get("password"),
+          };
+
+          try {
+            const response = await fetch("http://localhost:3000/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+              alert(result.message);
+              document.querySelector(".slider2").style.display = "none";
+              document.querySelector(".log-acc").click();
+            } else {
+              alert(result.message);
+            }
+          } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("提交表單時發生錯誤");
+          }
+        });
+    </script>
+    <script>
+      function handleCloseButton() {
+        document.querySelector(".slider").style.display = "none";
+      }
+
+      function hideLogin() {
+        document.querySelector(".slider").style.display = "none";
+        document.querySelector(
+          ".button-primary.sing-up.w-button.left"
+        ).style.display = "none";
+        document.querySelector(
+          ".button-primary.login.w-button.right"
+        ).style.display = "none";
+        document.getElementById("user-info").style.display = "flex";
+      }
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const email = document.querySelector('input[name="email"]').value;
+          const password = document.querySelector(
+            'input[name="password"]'
+          ).value;
+
+          try {
+            const response = await fetch("http://localhost:3000/login", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ email, password }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+              const { headshotUrl, imageFormat } = result;
+              const mimeType = imageFormat
+                ? `image/${imageFormat}`
+                : "image/png";
+              localStorage.setItem("isLoggedIn", "true");
+              localStorage.setItem("userName", result.name);
+              localStorage.setItem(
+                "userHeadshot",
+                result.headshot || "images/profile.png"
+              );
+              localStorage.setItem("userId", result.id);
+
+              const userAvatar = document.getElementById("user-avatar");
+              const dropdownHeader = document.getElementById("dropdown-header");
+              userAvatar.style.backgroundImage = `url('${headshotUrl}')`;
+
+              dropdownHeader.textContent = `您好，${result.name}`;
+              window.location.reload();
+            } else {
+              alert("帳號或密碼錯誤");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("登入失敗，請稍後再試");
+          }
+        });
+
+      function toggleDropdown() {
+        const dropdownMenu = document.getElementById("dropdown-menu");
+        const overlay = document.getElementById("overlay");
+        const userNameElement = document.getElementById("user-name");
+
+        if (dropdownMenu.classList.contains("show")) {
+          dropdownMenu.classList.remove("show");
+          dropdownMenu.classList.add("hide");
+          overlay.classList.remove("show");
+
+          if (userNameElement) {
+            userNameElement.classList.remove("hidden");
+          }
+        } else {
+          dropdownMenu.classList.remove("hide");
+          dropdownMenu.classList.add("show");
+          overlay.classList.add("show");
+
+          if (userNameElement) {
+            userNameElement.classList.add("hidden");
+          }
+        }
+      }
+
+      document.getElementById("overlay").addEventListener("click", function () {
+        const dropdownMenu = document.getElementById("dropdown-menu");
+        const overlay = document.getElementById("overlay");
+        const userNameElement = document.getElementById("user-name");
+        dropdownMenu.classList.remove("show");
+        dropdownMenu.classList.add("hide");
+        overlay.classList.remove("show");
+        if (userNameElement) {
+          userNameElement.classList.remove("hidden");
+        }
+      });
+
+      function checkLoginStatus() {
+        console.log("Checking login status...");
+
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        console.log("isLoggedIn:", isLoggedIn);
+        console.log(
+          "User ID from localStorage:",
+          localStorage.getItem("userId")
+        );
+        const loginButton = document.getElementById("login-button");
+        const signupButton = document.getElementById("signup-button");
+        const userInfo = document.getElementById("user-info");
+        const userAvatar = document.getElementById("user-avatar");
+        const dropdownHeader = document.getElementById("dropdown-header");
+        const userNameElement = document.getElementById("user-name");
+
+        if (isLoggedIn) {
+          if (loginButton) loginButton.style.display = "none";
+          if (signupButton) signupButton.style.display = "none";
+          if (userInfo) userInfo.style.display = "block";
+
+          const userName = localStorage.getItem("userName");
+          const headshotUrl =
+            localStorage.getItem("userHeadshot") || "images/profile.png";
+          userAvatar.style.backgroundImage = `url('${headshotUrl}')`;
+          if (userNameElement) {
+            userNameElement.textContent = userName;
+            userNameElement.style.width = `${userNameElement.scrollWidth}px`;
+          }
+          if (dropdownHeader) dropdownHeader.textContent = `您好，${userName}`;
+        } else {
+          if (loginButton) loginButton.style.display = "inline-block";
+          if (signupButton) signupButton.style.display = "inline-block";
+          if (userInfo) userInfo.style.display = "none";
+          if (userAvatar) userAvatar.style.display = "none";
+        }
+      }
+
+      window.addEventListener("load", checkLoginStatus);
+
+      function logout() {
+        console.log("logout");
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("userHeadshot");
+        localStorage.removeItem("userId");
+        window.location.reload();
+      }
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const logoutButton = document.getElementById("logout-button");
+
+        if (logoutButton) {
+          logoutButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            logout();
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const accountSettingButton = document.getElementById(
+          "accountSettingButton"
+        );
+
+        if (accountSettingButton) {
+          accountSettingButton.addEventListener("click", (event) => {
+            window.location.href = "accountSetting.html";
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const historyButton = document.getElementById("historyButton");
+        if (historyButton) {
+          historyButton.addEventListener("click", (event) => {
+            window.location.href = "historicalRecord.html";
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const switchAccountButton = document.getElementById(
+          "switchAccountButton"
+        );
+        const dropdownMenu = document.getElementById("dropdown-menu");
+        const overlay = document.getElementById("overlay");
+        const btnLogin = document.querySelector(".left");
+
+        if (switchAccountButton) {
+          switchAccountButton.addEventListener("click", (event) => {
+            if (dropdownMenu) {
+              dropdownMenu.classList.remove("show");
+              dropdownMenu.classList.add("hide");
+            }
+            if (overlay) {
+              overlay.classList.remove("show");
+            }
+
+            setTimeout(() => {
+              if (btnLogin) {
+                btnLogin.click();
+              }
+            }, 100);
+          });
+        }
+
+        btnLogin.addEventListener("click", () => {
+          animation.style.display = "block";
+          slider.style.display = "flex";
+          slider.style.animation = "fadeInFromBottom 0.5s ease-out forwards";
+          slider2.style.display = "none";
+          disableScroll();
+        });
+      });
+    </script>
+    <script>
+      window.addEventListener("load", checkLoginStatus);
+    </script>
+  </body>
+</html>

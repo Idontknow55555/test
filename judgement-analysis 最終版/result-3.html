@@ -1,0 +1,2035 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>判決書分析結果</title>
+    <style>
+      .nav-link {
+        color: #fff;
+        margin: 2rem 3rem;
+        text-decoration: none;
+        width: 100%;
+        display: flex;
+      }
+
+      .nav-link:hover {
+        color: rgb(219, 219, 17);
+      }
+
+      .nav-link:focus-visible {
+        outline-offset: 0px;
+        color: #0050bd;
+        border-radius: 4px;
+        outline: 2px solid #0050bd;
+      }
+
+      .nav-link[data-wf-focus-visible] {
+        outline-offset: 0px;
+        color: #0050bd;
+        border-radius: 4px;
+        outline: 2px solid #0050bd;
+      }
+
+      .nav-dropdown {
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      .nav-dropdown-toggle {
+        letter-spacing: 0.25px;
+        padding: 5px 30px 5px 10px;
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .nav-dropdown-toggle:hover {
+        color: rgba(26, 27, 31, 0.75);
+      }
+
+      .nav-dropdown-toggle:focus-visible {
+        outline-offset: 0px;
+        color: #0050bd;
+        border-radius: 5px;
+        outline: 2px solid #0050bd;
+      }
+
+      .nav-dropdown-toggle[data-wf-focus-visible] {
+        outline-offset: 0px;
+        color: #0050bd;
+        border-radius: 5px;
+        outline: 2px solid #0050bd;
+      }
+
+      .nav-dropdown-icon {
+        margin-right: 10px;
+      }
+
+      .nav-dropdown-list {
+        background-color: #fff;
+        border-radius: 12px;
+      }
+
+      .nav-dropdown-list.w--open {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .nav-dropdown-link {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 14px;
+      }
+
+      .nav-dropdown-link:focus-visible {
+        outline-offset: 0px;
+        color: #0050bd;
+        border-radius: 5px;
+        outline: 2px solid #0050bd;
+      }
+
+      .nav-dropdown-link[data-wf-focus-visible] {
+        outline-offset: 0px;
+        color: #0050bd;
+        border-radius: 5px;
+        outline: 2px solid #0050bd;
+      }
+
+      .nav-button-wrapper {
+        margin-left: 10rem;
+      }
+
+      .button-primary {
+        color: #fff;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        background-color: black;
+        margin-left: 6px;
+        margin-right: 6px;
+        margin-top: 60px;
+        padding: 12px 25px;
+        font-size: 12px;
+        line-height: 10px;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .button-primary:hover {
+        transform: scale(1.05);
+      }
+
+      .button-primary.sing-up {
+        color: #ecafff;
+        border-radius: 3rem;
+        padding-left: 25px;
+        padding-right: 25px;
+        font-weight: 700;
+      }
+
+      .button-primary.login {
+        color: #ecafff;
+        border-radius: 3rem;
+        padding-left: 25px;
+        padding-right: 25px;
+        font-weight: 700;
+      }
+
+      .container-for-hero {
+        flex-flow: row;
+        width: 100%;
+        max-width: 100%;
+        min-height: 30px;
+        max-height: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        overflow: hidden;
+      }
+
+      .container-for-hero.second-container {
+        width: 90%;
+      }
+
+      .navbar-wrapper {
+        width: 100%;
+        height: 60px;
+        align-items: center;
+        display: flex;
+        padding-left: 2rem;
+      }
+
+      .nav-menu {
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        padding-left: 65rem;
+        width: 100%;
+        display: flex;
+      }
+      .navbar-no-shadow {
+        background-color: #000;
+        background-image: linear-gradient(94deg, #000, #531e63);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+      }
+      .navbar-no-shadow-container {
+        z-index: 5;
+        background-color: rgba(0, 0, 0, 0);
+        align-items: center;
+        justify-content: center;
+        padding-left: 10rem;
+        max-width: 1800px;
+        margin: auto;
+        padding: 0;
+      }
+      #video-background {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        transform: translate(-50%, -50%);
+        background-size: cover;
+      }
+      .system-title {
+        margin-top: 30px;
+        z-index: 1;
+        font-size: 20px;
+        padding-left: 20px;
+      }
+
+      #caseInterest {
+        position: fixed;
+        top: 60px;
+        right: 10px;
+        width: 400px;
+        padding: 10px;
+        background-color: transparent;
+        color: white;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      #caseInterest h2 {
+        margin-top: 0;
+        font-size: 1.5em;
+        margin-left: 15px;
+        margin-bottom: 10px;
+      }
+      #caseInterest h5 {
+        margin-left: 15px;
+        margin-bottom: 10px;
+      }
+      #caseList {
+        max-height: 450px;
+        overflow-y: auto;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      #caseList::-webkit-scrollbar {
+        width: 10px;
+      }
+      #caseList::-webkit-scrollbar-thumb {
+        background: rgba(211, 211, 211, 0.3);
+        border-radius: 10px;
+      }
+
+      #caseList::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      #loadingMessage {
+        display: none;
+        text-align: center;
+        padding: 20px;
+        color: rgb(181, 181, 181);
+        font-size: 16px;
+      }
+      .case-item {
+        text-align: left;
+        width: 100%;
+        height: 95px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        font-size: 0.9em;
+        color: white;
+        background-color: rgba(105, 105, 105, 0.3);
+        padding: 10px;
+        border-radius: 15px;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        z-index: 10;
+        position: relative;
+      }
+      .case-item:hover {
+        transform: scale(1.05);
+      }
+      .case-item.hidden {
+        display: none;
+      }
+      .fade-effect {
+        background-color: rgba(172, 46, 250, 0.762);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        text-align: center;
+        display: block;
+        width: fit-content;
+        margin: 10px auto;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      #geminiText {
+        background-color: rgba(25, 25, 25, 0.907);
+        margin-right: 420px;
+        font-size: 19px;
+        margin-left: 40px;
+        margin-top: 40px;
+        margin-bottom: 60px;
+        padding: 30px;
+        border: 2px solid #d5d5d5;
+        border-radius: 15px;
+        overflow-wrap: break-word;
+      }
+
+      .fade-in-line {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeIn 0.5s forwards ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .floating-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 90px;
+        height: 90px;
+        background-image: url("Advanced.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        font-size: 24px;
+        box-shadow: 0 0px 10px rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease;
+      }
+      .floating-button:hover {
+        transform: scale(1.05);
+      }
+      .floating-button.hidden {
+        display: none;
+      }
+
+      @keyframes dialogIn {
+        from {
+          transform: scale(0.7);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes dialogOut {
+        from {
+          transform: scale(1);
+          opacity: 1;
+        }
+        to {
+          transform: scale(0.7);
+          opacity: 0;
+        }
+      }
+
+      .dialog-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+        z-index: 999;
+      }
+      .dialog-overlay.showing .dialog {
+        animation-name: dialogIn;
+      }
+
+      .dialog-overlay.hiding .dialog {
+        animation-name: dialogOut;
+      }
+
+      .dialog {
+        background: #2d2d2d;
+        padding: 0;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 600px;
+        text-align: center;
+        overflow-y: auto;
+        max-height: 80%;
+        color: #ffffff;
+        position: relative;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+      }
+      .dialog::-webkit-scrollbar {
+        width: 10px;
+      }
+      .dialog::-webkit-scrollbar-thumb {
+        background: rgba(211, 211, 211, 0.3);
+        border-radius: 10px;
+      }
+
+      .dialog::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .dialog .logo-container {
+        position: relative;
+        width: 100%;
+      }
+
+      .dialog .logo-container img {
+        width: 100%;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+      }
+
+      .dialog .logo-container .powered-by {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #4d4d4d;
+        font-size: 12px;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-family: "San Francisco", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+          "Droid Sans", "Helvetica Neue", sans-serif;
+      }
+
+      .dialog .logo-container::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background: linear-gradient(to bottom, rgba(45, 45, 45, 0), #2d2d2d);
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+      .dialog .content {
+        padding: 20px;
+        background: #2d2d2d;
+      }
+
+      .dialog input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 10px 0;
+        box-sizing: border-box;
+        background-color: #444444;
+        color: #ffffff;
+        border: 1px solid rgba(172, 46, 250, 0);
+        border-radius: 4px;
+      }
+
+      .dialog button {
+        padding: 10px 20px;
+        background-color: rgba(172, 46, 250, 0.87);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .dialog button.disabled {
+        background-color: #555555;
+        cursor: not-allowed;
+      }
+
+      .dialog .response {
+        margin-top: 15px;
+        text-align: left;
+      }
+
+      .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 25px;
+        height: 25px;
+        background: red;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      @keyframes popIn {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -60%);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      @keyframes popOut {
+        from {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+        to {
+          opacity: 0;
+          transform: translate(-50%, -60%);
+        }
+      }
+
+      .modal-content {
+        position: fixed;
+        top: 53%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        max-width: 1000px;
+        height: 70vh;
+        background-color: rgba(45, 45, 45, 0.8);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        display: none;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+        overflow-y: auto;
+      }
+      .modal-content::-webkit-scrollbar {
+        width: 10px;
+      }
+      .modal-content::-webkit-scrollbar-thumb {
+        background: rgba(211, 211, 211, 0.3);
+        border-radius: 10px;
+      }
+
+      .modal-content::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .modal-content p {
+        font-size: 18px;
+        white-space: pre-wrap;
+      }
+
+      .modal-content.showing {
+        animation-name: popIn;
+      }
+
+      .modal-content.hiding {
+        animation-name: popOut;
+      }
+
+      .modal-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 999;
+        display: none;
+        overflow: hidden;
+      }
+      .modal-background video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+      }
+      #loadingIndicator {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 14px;
+        color: #fff;
+      }
+
+      .loading-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .loading-icon {
+        width: 30px;
+        height: 30px;
+      }
+
+      .loading-text {
+        font-size: 12px;
+        margin: 0;
+      }
+      .fade-effect {
+        transition: transform 0.2s ease;
+      }
+      .fade-effect:hover {
+        transform: scale(1.05);
+      }
+      .fade-effect.hidden {
+        display: none;
+      }
+
+      .sort-options {
+        margin-bottom: 0px;
+        width: 72%;
+        background-color: rgba(105, 105, 105, 0.3);
+        font-size: 16px;
+        color: white;
+        padding: 3px;
+        margin-left: 10px;
+        margin-bottom: 6px;
+        border-radius: 5px;
+      }
+      .sort-options label {
+        margin-right: 10px;
+        margin-left: 10px;
+        font-size: 15px;
+      }
+      .sort-options select {
+        background-color: #333;
+        color: white;
+        border: 1px solid #444;
+        border-radius: 15px;
+        padding: 5px 10px;
+        font-size: 15px;
+        outline: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .sort-options select:hover {
+        background-color: #444;
+      }
+
+      .sort-options select:focus {
+        background-color: #555;
+      }
+      .navbar {
+        width: 100%;
+        height: 50px;
+        background: linear-gradient(to right, #000000, #800080);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+      }
+
+      .back-button {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+      }
+
+      .back-button .icon {
+        width: 24px;
+        height: 24px;
+        color: #fff;
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+      }
+
+      .back-button:hover .icon {
+        transform: scale(1.2);
+        filter: drop-shadow(0 0 8px #fff);
+      }
+
+      .navbar-right {
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
+
+      .user-avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #4a90e2;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        font-weight: bold;
+        border: 2px solid #fff;
+        cursor: pointer;
+        margin-right: 50px;
+      }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+      }
+
+      .overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      body {
+        padding-top: 50px;
+        background-color: #0e0e0e;
+        color: #ffffff;
+        margin: 0;
+      }
+      .dropdown-menu {
+        display: block;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+
+        color: #fff;
+        position: absolute;
+
+        right: 3rem;
+        top: 120%;
+        z-index: 1000;
+        border-radius: 8px;
+        width: 150px;
+        background-color: #333;
+      }
+
+      .dropdown-menu.show {
+        max-height: 300px;
+        opacity: 1;
+      }
+
+      .dropdown-menu.hide {
+        max-height: 0;
+        opacity: 0;
+      }
+
+      .dropdown-header {
+        padding: 10px;
+        color: white;
+        background-color: #444;
+        border-radius: 8px 8px 0 0;
+        font-weight: bold;
+        font-family: Arial, sans-serif;
+      }
+
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        color: white;
+        text-decoration: none;
+        border-bottom: 1px solid #555;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .dropdown-item:hover {
+        background-color: #555;
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+      }
+
+      .dropdown-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+      }
+
+      .dropdown-item:last-child {
+        border-bottom: none;
+      }
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        border: 2px solid #fff;
+        cursor: pointer;
+        margin-left: 10px;
+        z-index: 2;
+        font-family: Arial, sans-serif;
+      }
+      .user-name {
+        transition: opacity 0.5s ease-in-out;
+        opacity: 1;
+        display: grid;
+        width: 160px !important;
+        justify-content: flex-end;
+        height: 60px;
+        align-items: center;
+        color: #fff;
+        font-size: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        z-index: 0;
+        font-family: Arial, sans-serif;
+      }
+      .user-info {
+        position: relative;
+        height: 60px;
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: 0%;
+        flex-flow: row nowrap;
+      }
+      #judge-results{
+        margin-right: 420px;
+        margin-left: 40px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        background-color: rgba(134, 134, 134, 0.264);
+        border: 2px solid #d5d5d5;
+        border-radius: 15px;
+      }
+      .judge-results-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .judge-name-container {
+        width: 50%;
+        text-align: left;
+        padding-right: 20px;
+    }
+
+    .pie-chart-container {
+        width: 50%;
+        height: 180px;
+        max-width: 40%;
+    }
+
+    #judgeNamesList {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    #judgeNamesList li {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    #judgeChart {
+        width: 100%;
+        height: 100%;
+    }
+    li {
+        font-family: 'Arial', sans-serif;
+        font-size: 20px;
+        font-weight: normal;
+        color: #dfdfdf;
+        line-height: 1.5;
+        text-align: left;
+        margin-left: 80px;
+    }
+    h6{
+        font-family: 'Arial', sans-serif;
+        font-size: 2.3em;
+        font-weight: bold;
+        color: #ffffff;
+        text-align: left;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    canvas{
+        width:40%;
+        margin: 10px;
+    }
+    </style>
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body>
+    <div class="animation"></div>
+    <div class="slider">
+      <div class="login-img">
+        <img src="./images/logimage_0.jpg" alt="登入圖片" />
+      </div>
+      <div class="login-content">
+        <button class="close-button" onclick="handleCloseButton()">×</button>
+        <div class="title">
+          <h1 class="login-title">登錄您的帳戶</h1>
+          <div class="title-2" style="margin-left: 2rem; margin-top: 0">
+            <h5 class="login-subtitle">沒有帳號密碼 ?</h5>
+            <button class="set-acc">註冊</button>
+          </div>
+        </div>
+        <form id="loginForm">
+          <p class="email">電子信箱</p>
+          <input
+            type="email"
+            class="email"
+            name="email"
+            placeholder="   Ex: abc123456@gmail.com"
+            required
+          />
+          <p class="password">密碼</p>
+          <input
+            type="password"
+            class="password"
+            name="password"
+            placeholder="   密碼"
+            required
+          />
+          <br />
+          <button type="submit">登錄</button>
+        </form>
+      </div>
+    </div>
+    <div class="slider2">
+      <div class="set-content">
+        <div class="title">
+          <h1 class="login-title">創建您的帳戶</h1>
+          <div class="title-2" style="margin-top: 0; margin-left: 5rem">
+            <h5 class="login-subtitle">已經有帳號密碼 ?</h5>
+            <button class="log-acc">登錄</button>
+          </div>
+        </div>
+        <form id="registerForm">
+          <p class="username">使用者名稱</p>
+          <input
+            type="text"
+            class="username"
+            name="username"
+            placeholder="   輸入使用者名稱"
+          />
+          <p class="email">電子信箱</p>
+          <input
+            type="email"
+            class="email"
+            name="email"
+            placeholder="   Ex: abc123456@.gmail.com"
+          />
+          <p class="password">密碼</p>
+          <input
+            type="password"
+            class="password"
+            name="password"
+            placeholder="   設定密碼"
+          />
+          <br />
+          <button type="submit">註冊</button>
+        </form>
+      </div>
+      <div class="set-img">
+        <button class="close-button2">×</button>
+        <img src="./images/signimage_0.png" alt="註冊圖片" />
+      </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="navbar-no-shadow">
+      <div
+        data-animation="default"
+        data-collapse="medium"
+        data-duration="400"
+        data-easing="ease"
+        data-easing2="ease"
+        role="banner"
+        class="navbar-no-shadow-container w-nav"
+      >
+        <div class="container-for-hero">
+          <div class="navbar-wrapper">
+            <a href="#" class="back-button" onclick="history.back()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon"
+              >
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </a>
+            <link rel="prefetch" href="/" />
+            <nav role="navigation" class="nav-menu-wrapper w-nav-menu">
+              <ul role="list" class="nav-menu w-list-unstyled">
+                <div class="nav-button-wrapper">
+                  <a
+                    id="login-button"
+                    data-w-id="c6a32ba5-d06d-e038-b05c-54773a0ae84a"
+                    href="#"
+                    class="button-primary sing-up w-button left"
+                    >Login</a
+                  >
+                  <a
+                    id="signup-button"
+                    href="#"
+                    class="button-primary login w-button right"
+                    >Sign up</a
+                  >
+                  <div id="user-info" class="user-info" style="display: none">
+                    <div id="user-name" class="user-name"></div>
+                    <div
+                      id="user-avatar"
+                      class="user-avatar"
+                      onclick="toggleDropdown()"
+                    ></div>
+                  </div>
+                  <div id="dropdown-menu" class="dropdown-menu">
+                    <div id="dropdown-header" class="dropdown-header"></div>
+                    <a href="#" id="accountSettingButton" class="dropdown-item">
+                      <img
+                        src="setting.png"
+                        alt="Settings Icon"
+                        class="dropdown-icon"
+                      />帳號設定
+                    </a>
+                    <a href="#" id="historyButton" class="dropdown-item">
+                      <img
+                        src="history.png"
+                        alt="History Icon"
+                        class="dropdown-icon"
+                      />歷史紀錄
+                    </a>
+                    <a href="#" id="switchAccountButton" class="dropdown-item">
+                      <img
+                        src="switch-account.png"
+                        alt="Switch Icon"
+                        class="dropdown-icon"
+                      />切換帳戶
+                    </a>
+                    <a href="#" id="logout-button" class="dropdown-item">
+                      <img
+                        src="log-out.png"
+                        alt="Logout Icon"
+                        class="dropdown-icon"
+                      />登出
+                    </a>
+                  </div>
+                </div>
+
+                <div id="overlay" class="overlay"></div>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="system-title">
+      <h1>判決書分析結果</h1>
+    </div>
+    <div id="geminiText"></div>
+
+    <div id="caseInterest">
+      <h2>相似的案件...</h2>
+      <h5>(點擊下方相似案件，可查看造成不同判決結果之原因分析)</h5>
+      <!-- 排序選擇器 -->
+      <div class="sort-options">
+        <label for="sort-select">排序方式:</label>
+        <select id="sortCriteria" onchange="sortCases(this.value)">
+          <option value="default">預設排序</option>
+          <option value="date-asc">按日期升序排列</option>
+          <option value="date-desc">按日期降序排列</option>
+        </select>
+      </div>
+      <div id="caseList">
+        <div id="loadingMessage">獲取資料庫資料中，請稍後...</div>
+      </div>
+      <div class="fade-effect" id="fadeEffect">查看更多</div>
+    </div>
+
+    <button class="floating-button" id="advanced-question-button"></button>
+
+    <div class="dialog-overlay" id="dialog-overlay">
+      <div class="dialog" id="dialog-box">
+        <div class="logo-container">
+          <img src="images/AIimage.jpg" />
+        </div>
+        <button class="close-button" id="close-button">&times;</button>
+        <div class="content">
+          <p>您好，有甚麼可以幫忙的嗎?</p>
+          <input type="text" id="user-question" placeholder="請輸入你的問題" />
+          <button id="send-question-button">送出</button>
+          <div
+            id="loadingIndicator"
+            class="loading-container"
+            style="display: none"
+          >
+            <img src="loading.gif" alt="Loading" class="loading-icon" />
+            <p class="loading-text">AI分析中，請稍後...</p>
+          </div>
+          <div class="response" id="response-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="judge-results">
+      <!-- 每位法官的結果將會被動態添加到這裡 -->
+    </div>
+
+    <script>
+      const API_KEY = "AIzaSyAKIV3ZOU9fY3tkcoVdArKZ3udh7J07SD0";
+      const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+      function toggleDropdown() {
+        const dropdownMenu = document.getElementById("dropdown-menu");
+        const overlay = document.getElementById("overlay");
+
+        if (dropdownMenu.classList.contains("show")) {
+          dropdownMenu.classList.remove("show");
+          dropdownMenu.classList.add("hide");
+          overlay.classList.remove("show");
+        } else {
+          dropdownMenu.classList.remove("hide");
+          dropdownMenu.classList.add("show");
+          overlay.classList.add("show");
+        }
+      }
+
+      document.getElementById("overlay").addEventListener("click", function () {
+        const dropdownMenu = document.getElementById("dropdown-menu");
+        const overlay = document.getElementById("overlay");
+
+        dropdownMenu.classList.remove("show");
+        dropdownMenu.classList.add("hide");
+        overlay.classList.remove("show");
+      });
+
+      function goBack() {
+        window.history.back();
+      }
+      let originalOrder = [];
+
+      function initializeCaseList() {
+        const caseList = document.getElementById("caseList");
+        const cases = Array.from(caseList.getElementsByClassName("case-item"));
+        originalOrder = cases.slice();
+      }
+
+      function sortCases(criteria) {
+        const caseList = document.getElementById("caseList");
+        const cases = Array.from(caseList.getElementsByClassName("case-item"));
+
+        if (criteria === "default") {
+          caseList.innerHTML = "";
+          originalOrder.forEach((caseItem) => caseList.appendChild(caseItem));
+        } else {
+          cases.sort((a, b) => {
+            const dateA = extractDate(a);
+            const dateB = extractDate(b);
+
+            if (criteria === "date-asc") {
+              return dateA - dateB;
+            } else if (criteria === "date-desc") {
+              return dateB - dateA;
+            }
+            return 0;
+          });
+
+          caseList.innerHTML = "";
+          cases.forEach((caseItem) => caseList.appendChild(caseItem));
+        }
+      }
+
+      function extractDate(caseItem) {
+        const innerHTML = caseItem.innerHTML;
+
+        const dateMatch = innerHTML.match(
+          /<strong>裁判日期:<\/strong>\s*([0-9-]+)/
+        );
+
+        if (dateMatch && dateMatch[1]) {
+          return new Date(dateMatch[1].trim());
+        }
+
+        console.error("裁判日期 not found in button innerHTML:", innerHTML);
+        return new Date(0);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+            const geminiText = sessionStorage.getItem("geminiText");
+            const pdfText1 = sessionStorage.getItem("pdfText1");
+            const pdfText2 = sessionStorage.getItem("pdfText2");
+
+            let formattedText = geminiText
+                ? geminiText.replace(/\#\#/g, "🧑🏻‍⚖️").replace(/\*\*/g, "").replace(/\*/g, "•").replace(/\n/g, "<br>")
+                : '';
+
+            receiveGeminiResponse(formattedText);
+        });
+
+        function displayGeminiTextWithFadeIn(text) {
+            const container = document.getElementById('geminiText');
+            container.innerHTML = '';
+
+            if (typeof text !== 'string') {
+                console.error("Gemini 回傳的內容不是字符串：", text);
+                return;
+            }
+
+            const lines = text.split(/<br\s*\/?>/);
+
+            lines.forEach((line, index) => {
+                const lineElement = document.createElement('div');
+                lineElement.innerHTML = line;
+                lineElement.classList.add('fade-in-line');
+                lineElement.style.animationDelay = `${index * 0.1}s`;
+                container.appendChild(lineElement);
+            });
+        }
+
+        function receiveGeminiResponse(geminiText) {
+            displayGeminiTextWithFadeIn(geminiText);
+        }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const geminiText = sessionStorage.getItem("geminiText");
+        const pdfText1 = sessionStorage.getItem("pdfText1");
+        const pdfText2 = sessionStorage.getItem("pdfText2");
+        const sortSelect = document.getElementById("sort-select");
+
+        const judgeName = localStorage.getItem("judgeName");
+        console.log("Judge Name:", judgeName);
+
+        function fetchCases() {
+          const loadingMessage = document.getElementById("loadingMessage");
+          loadingMessage.style.display = "block";
+          fetch(`http://localhost:3000/getCases?judgeName=${judgeName}`)
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Fetched Cases:", data);
+              const caseList = document.getElementById("caseList");
+              caseList.innerHTML = "";
+              caseList.appendChild(loadingMessage);
+
+              if (data.length === 0) {
+                console.log("數據庫數據為空，進行重試...");
+                setTimeout(fetchCases, 2000);
+                return;
+              }
+              sortCases(document.getElementById("sortCriteria").value);
+              const ids = new Set();
+              data.forEach((caseItem) => {
+                if (ids.has(caseItem.id)) {
+                  console.warn(
+                    `Duplicate ID detected: ${caseItem.id}`,
+                    caseItem
+                  );
+                }
+                ids.add(caseItem.id);
+              });
+
+              data.forEach((caseItem, index) => {
+                const button = document.createElement("button");
+                button.classList.add("case-item");
+                if (index >= 4) {
+                  button.classList.add("hidden");
+                }
+                initializeCaseList();
+                function truncateText(text, maxLength) {
+                  return text.length > maxLength
+                    ? `${text.substring(0, maxLength)}...`
+                    : text;
+                }
+                const 法官姓名 = truncateText(caseItem.法官姓名, 16);
+                const 內文 = truncateText(caseItem.內文, 17);
+
+                button.innerHTML = `<strong>裁判案由:</strong> ${caseItem.裁判案由}<br>
+                         <strong>法官姓名:</strong> ${法官姓名}<br>
+                         <strong>裁判日期:</strong> ${caseItem.裁判日期}<br>
+                         <strong>內文:</strong> ${內文}`;
+
+                document.querySelector("#caseList").appendChild(button);
+
+                console.log(`Storing case with ID: ${caseItem.id}`, caseItem);
+                sessionStorage.setItem(
+                  `case_${caseItem.id}`,
+                  JSON.stringify(caseItem)
+                );
+
+                caseList.appendChild(button);
+
+                button.addEventListener("click", () => {
+                  console.log(`Button clicked for case ID: ${caseItem.id}`);
+                  fetchCasesAnalysis(caseItem.id);
+                });
+              });
+              loadingMessage.style.display = "none";
+              const fadeEffect = document.getElementById("fadeEffect");
+              fadeEffect.innerText = "查看更多";
+            })
+            .catch((error) => {
+              console.error("Error fetching cases:", error);
+            });
+        }
+
+        async function generateAnalysis(caseData) {
+          const prompt =
+            "請以案件一為基準並分析以上這兩個相似案件導致判決結果不同的原因，並以台灣現行法學為基準回答。";
+          const diffrentResultPrompt = `案件一:\n${geminiText}\n案件二:\n${caseData}\n\n${prompt}`;
+          console.log(diffrentResultPrompt);
+          try {
+            const response = await fetch(API_URL, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                contents: [{ parts: [{ text: diffrentResultPrompt }] }],
+              }),
+            });
+
+            if (!response.ok) {
+              const errorMessage = await response.text();
+              throw new Error("分析失敗：" + errorMessage);
+            }
+
+            const data = await response.json();
+            const analysisResult = data.candidates[0].content.parts[0].text;
+
+            // 返回分析結果
+            return analysisResult
+              .replace(/\#\#/g, "⚖️")
+              .replace(/\*\*/g, "")
+              .replace(/\*/g, "•")
+              .replace(/\n/g, "<br>");
+          } catch (error) {
+            console.error("Error:", error);
+            return "分析失敗，請稍後再試。";
+          }
+        }
+
+        async function fetchCasesAnalysis(caseId) {
+          console.log(`Fetching analysis for case ID: ${caseId}`);
+          const caseData = JSON.parse(sessionStorage.getItem(`case_${caseId}`));
+          console.log("Case Data:", caseData);
+
+          if (caseData) {
+            const modalBackground = document.createElement("div");
+            modalBackground.classList.add("modal-background");
+
+            const video = document.createElement("video");
+            video.src = "Abstract Colorful Motion Background.mp4";
+            video.autoplay = true;
+            video.loop = true;
+            video.muted = true;
+            video.playsInline = true;
+            video.disablePictureInPicture = true;
+
+            modalBackground.appendChild(video);
+            document.body.appendChild(modalBackground);
+
+            const modal = document.createElement("div");
+            modal.classList.add("modal-content", "showing");
+            modal.innerHTML = `
+            <span class="close-button">&times;</span>
+            <h2>案件詳細內容</h2>
+            <p><strong>裁判案由:</strong> ${caseData.裁判案由}</p>
+            <p><strong>法官姓名:</strong> ${caseData.法官姓名}</p>
+            <p><strong>裁判日期:</strong> ${caseData.裁判日期}</p>
+            <p><strong>內文:</strong> ${caseData.內文}</p>
+            <p id="analysisResult" style="color: orange;"></br><strong>為何會有不同的判決結果?</strong> </br>正在生成分析結果...</p>
+        `;
+            document.body.appendChild(modal);
+
+            modal.style.display = "block";
+            modalBackground.style.display = "block";
+
+            const analysisResult = await generateAnalysis(caseData.內文);
+            document.getElementById(
+              "analysisResult"
+            ).innerHTML = `</br><strong>為何會有不同的判決結果?</strong> </br>${analysisResult}`;
+
+            const closeButton = modal.querySelector(".close-button");
+            closeButton.addEventListener("click", () => {
+              modal.classList.remove("showing");
+              modal.classList.add("hiding");
+              modalBackground.style.display = "none";
+              setTimeout(() => {
+                document.body.removeChild(modal);
+                document.body.removeChild(modalBackground);
+              }, 300);
+            });
+
+            modalBackground.addEventListener("click", () => {
+              modal.classList.remove("showing");
+              modal.classList.add("hiding");
+              modalBackground.style.display = "none";
+              setTimeout(() => {
+                document.body.removeChild(modal);
+                document.body.removeChild(modalBackground);
+              }, 300);
+            });
+          } else {
+            console.error("未找到案件詳細信息");
+          }
+        }
+
+        fetchCases();
+
+        document
+          .getElementById("advanced-question-button")
+          .addEventListener("click", function () {
+            document.getElementById("dialog-overlay").style.visibility =
+              "visible";
+          });
+
+        document
+          .getElementById("close-button")
+          .addEventListener("click", function () {
+            document.getElementById("dialog-overlay").style.visibility =
+              "hidden";
+          });
+
+        document
+          .getElementById("send-question-button")
+          .addEventListener("click", function () {
+            sendQuestion();
+          });
+
+        document
+          .getElementById("user-question")
+          .addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+              sendQuestion();
+            }
+          });
+        document
+          .getElementById("send-question-button")
+          .addEventListener("click", sendQuestion);
+        document
+          .getElementById("user-question")
+          .addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              sendQuestion();
+            }
+          });
+
+        async function sendQuestion() {
+          const loadingIndicator = document.getElementById("loadingIndicator");
+          const question = document
+            .getElementById("user-question")
+            .value.trim();
+          const pdfText1 = sessionStorage.getItem("pdfText1");
+          const pdfText2 = sessionStorage.getItem("pdfText2");
+          const sendButton = document.getElementById("send-question-button");
+
+          if (question !== "") {
+            loadingIndicator.style.display = "block";
+            sendButton.classList.add("disabled");
+            sendButton.disabled = true;
+
+            try {
+              const response = await fetch(API_URL, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  contents: [
+                    {
+                      parts: [
+                        {
+                          text:
+                            geminiText +
+                            pdfText1 +
+                            pdfText2 +
+                            "\n\n問題：" +
+                            question,
+                        },
+                      ],
+                    },
+                  ],
+                }),
+              });
+
+              if (!response.ok) {
+                const errorMessage = await response.text();
+                throw new Error("分析失敗：" + errorMessage);
+              }
+
+              const data = await response.json();
+              const replyText = data.candidates[0].content.parts[0].text;
+
+              let formattedReplyText = replyText.replace(/\*\*/g, "");
+              formattedReplyText = formattedReplyText.replace(/\*/g, "•");
+              formattedReplyText = formattedReplyText.replace(/\n/g, "<br>");
+
+              const responseContainer =
+                document.getElementById("response-container");
+              responseContainer.innerHTML = `<p><strong>Mr.Judger：</strong> ${formattedReplyText}</p>`;
+            } catch (error) {
+              console.error("Error:", error);
+              alert("分析失敗，請稍後再試：" + error.message);
+            } finally {
+              loadingIndicator.style.display = "none";
+              sendButton.classList.remove("disabled");
+              sendButton.disabled = false;
+            }
+          } else {
+            alert("請輸入您的問題");
+          }
+        }
+        function showDialog() {
+          const dialogOverlay = document.getElementById("dialog-overlay");
+          dialogOverlay.classList.remove("hiding");
+          dialogOverlay.classList.add("showing");
+          dialogOverlay.style.visibility = "visible";
+        }
+
+        function hideDialog() {
+          const dialogOverlay = document.getElementById("dialog-overlay");
+          dialogOverlay.classList.remove("showing");
+          dialogOverlay.classList.add("hiding");
+          setTimeout(() => {
+            dialogOverlay.style.visibility = "hidden";
+          }, 300);
+        }
+
+        document
+          .getElementById("advanced-question-button")
+          .addEventListener("click", function () {
+            showDialog();
+          });
+
+        document
+          .getElementById("close-button")
+          .addEventListener("click", function () {
+            hideDialog();
+          });
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            hideDialog();
+          }
+        });
+
+        document
+          .getElementById("dialog-overlay")
+          .addEventListener("click", function (event) {
+            if (event.target === document.getElementById("dialog-overlay")) {
+              hideDialog();
+            }
+          });
+
+        const fadeEffect = document.getElementById("fadeEffect");
+        fadeEffect.addEventListener("click", function () {
+          const hiddenItems = document.querySelectorAll(".case-item.hidden");
+          const visibleItems = document.querySelectorAll(
+            ".case-item:not(.hidden)"
+          );
+          const isExpanding = fadeEffect.innerText === "查看更多";
+
+          if (isExpanding) {
+            hiddenItems.forEach((item, index) => {
+              if (index < 6) {
+                item.classList.remove("hidden");
+              }
+            });
+            fadeEffect.innerText = "查看更少";
+          } else {
+            visibleItems.forEach((item, index) => {
+              if (index >= 4) {
+                item.classList.add("hidden");
+              }
+            });
+            fadeEffect.innerText = "查看更多";
+          }
+        });
+      });
+
+      function showModal() {
+        const modal = document.querySelector(".modal-content");
+        modal.style.display = "block";
+        document.querySelector(".modal-background").style.display = "block";
+        modal.classList.remove("pop-out");
+      }
+
+      document.querySelectorAll(".case-item").forEach((item) => {
+        item.addEventListener("click", function () {
+          showModal();
+        });
+      });
+
+      document
+        .querySelector(".modal-background")
+        .addEventListener("click", function () {
+          hideModal();
+        });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          hideModal();
+        }
+      });
+
+      function hideModal() {
+        const modal = document.querySelector(".modal-content");
+        const modalBackground = document.querySelector(".modal-background");
+
+        if (modal && modalBackground) {
+          modal.classList.remove("showing");
+          modal.classList.add("hiding");
+          modalBackground.style.display = "none";
+
+          setTimeout(() => {
+            modal.style.display = "none";
+            modalBackground.style.display = "none";
+          }, 300);
+        }
+      }
+    </script>
+    <video autoplay muted loop id="video-background">
+      <source src="Abstract Colorful Motion Background.mp4" type="video/mp4" />
+    </video>
+    <script>
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const formData = new FormData(e.target);
+          const data = {
+            username: formData.get("username"),
+            email: formData.get("email"),
+            password: formData.get("password"),
+          };
+
+          try {
+            const response = await fetch("http://localhost:3000/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+              alert(result.message);
+              document.querySelector(".slider2").style.display = "none";
+              document.querySelector(".log-acc").click();
+            } else {
+              alert(result.message);
+            }
+          } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("提交表單時發生錯誤");
+          }
+        });
+    </script>
+    <script>
+      function hideLogin() {
+        document.querySelector(".slider").style.display = "none";
+        document.querySelector(
+          ".button-primary.sing-up.w-button.left"
+        ).style.display = "none";
+        document.querySelector(
+          ".button-primary.login.w-button.right"
+        ).style.display = "none";
+        document.getElementById("user-info").style.display = "flex";
+      }
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const email = document.querySelector('input[name="email"]').value;
+          const password = document.querySelector(
+            'input[name="password"]'
+          ).value;
+
+          try {
+            const response = await fetch("http://localhost:3000/login", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ email, password }),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+              const { headshotUrl, imageFormat } = result;
+              const mimeType = imageFormat
+                ? `image/${imageFormat}`
+                : "image/png";
+              localStorage.setItem("isLoggedIn", "true");
+              localStorage.setItem("userName", result.name);
+              localStorage.setItem(
+                "userHeadshot",
+                result.headshot || "images/profile.png"
+              );
+              localStorage.setItem("userId", result.id);
+
+              const userAvatar = document.getElementById("user-avatar");
+              const dropdownHeader = document.getElementById("dropdown-header");
+              userAvatar.style.backgroundImage = `url('${headshotUrl}')`;
+
+              dropdownHeader.textContent = `您好，${result.name}`;
+              window.location.reload();
+            } else {
+              alert("帳號或密碼錯誤");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("登入失敗，請稍後再試");
+          }
+        });
+
+      function toggleDropdown() {
+        const dropdownMenu = document.getElementById("dropdown-menu");
+        const overlay = document.getElementById("overlay");
+        const userNameElement = document.getElementById("user-name");
+
+        if (dropdownMenu.classList.contains("show")) {
+          dropdownMenu.classList.remove("show");
+          dropdownMenu.classList.add("hide");
+          overlay.classList.remove("show");
+
+          if (userNameElement) {
+            userNameElement.classList.remove("hidden");
+          }
+        } else {
+          dropdownMenu.classList.remove("hide");
+          dropdownMenu.classList.add("show");
+          overlay.classList.add("show");
+
+          if (userNameElement) {
+            userNameElement.classList.add("hidden");
+          }
+        }
+      }
+
+      document.getElementById("overlay").addEventListener("click", function () {
+        const dropdownMenu = document.getElementById("dropdown-menu");
+        const overlay = document.getElementById("overlay");
+        const userNameElement = document.getElementById("user-name");
+        dropdownMenu.classList.remove("show");
+        dropdownMenu.classList.add("hide");
+        overlay.classList.remove("show");
+        if (userNameElement) {
+          userNameElement.classList.remove("hidden");
+        }
+      });
+
+      function checkLoginStatus() {
+        console.log("Checking login status...");
+
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        console.log("isLoggedIn:", isLoggedIn);
+        console.log(
+          "User ID from localStorage:",
+          localStorage.getItem("userId")
+        );
+        const loginButton = document.getElementById("login-button");
+        const signupButton = document.getElementById("signup-button");
+        const userInfo = document.getElementById("user-info");
+        const userAvatar = document.getElementById("user-avatar");
+        const dropdownHeader = document.getElementById("dropdown-header");
+        const userNameElement = document.getElementById("user-name");
+
+        if (isLoggedIn) {
+          if (loginButton) loginButton.style.display = "none";
+          if (signupButton) signupButton.style.display = "none";
+          if (userInfo) userInfo.style.display = "block";
+
+          const userName = localStorage.getItem("userName");
+          const headshotUrl =
+            localStorage.getItem("userHeadshot") || "images/profile.png";
+          userAvatar.style.backgroundImage = `url('${headshotUrl}')`;
+          if (userNameElement) {
+            userNameElement.textContent = userName;
+            userNameElement.style.width = `${userNameElement.scrollWidth}px`;
+          }
+          if (dropdownHeader) dropdownHeader.textContent = `您好，${userName}`;
+        } else {
+          if (loginButton) loginButton.style.display = "inline-block";
+          if (signupButton) signupButton.style.display = "inline-block";
+          if (userInfo) userInfo.style.display = "none";
+          if (userAvatar) userAvatar.style.display = "none";
+        }
+      }
+
+      window.addEventListener("load", checkLoginStatus);
+
+      function logout() {
+        console.log("logout");
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("userHeadshot");
+        localStorage.removeItem("userId");
+        window.location.reload();
+      }
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const logoutButton = document.getElementById("logout-button");
+
+        if (logoutButton) {
+          logoutButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            logout();
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const accountSettingButton = document.getElementById(
+          "accountSettingButton"
+        );
+
+        if (accountSettingButton) {
+          accountSettingButton.addEventListener("click", (event) => {
+            window.location.href = "accountSetting.html";
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const historyButton = document.getElementById("historyButton");
+        if (historyButton) {
+          historyButton.addEventListener("click", (event) => {
+            window.location.href = "historicalRecord.html";
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const switchAccountButton = document.getElementById(
+          "switchAccountButton"
+        );
+        const dropdownMenu = document.getElementById("dropdown-menu");
+        const overlay = document.getElementById("overlay");
+        const btnLogin = document.querySelector(".left");
+
+        if (switchAccountButton) {
+          switchAccountButton.addEventListener("click", (event) => {
+            if (dropdownMenu) {
+              dropdownMenu.classList.remove("show");
+              dropdownMenu.classList.add("hide");
+            }
+            if (overlay) {
+              overlay.classList.remove("show");
+            }
+
+            setTimeout(() => {
+              if (btnLogin) {
+                btnLogin.click();
+              }
+            }, 100);
+          });
+        }
+
+        btnLogin.addEventListener("click", () => {
+          animation.style.display = "block";
+          slider.style.display = "flex";
+          slider.style.animation = "fadeInFromBottom 0.5s ease-out forwards";
+          slider2.style.display = "none";
+          disableScroll();
+        });
+      });
+
+      //判決結果比率
+      const judgeName = localStorage.getItem("judgeName");
+  if (judgeName) {
+      fetch(`http://localhost:3000/getJudgeResults?judgeName=${judgeName}`)
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.json();
+          })
+          .then(data => {
+              displayJudgeResults(data);
+          })
+          .catch(error => {
+              console.error('Error fetching judge results:', error);
+              alert('無法取得法官審理結果，請稍後再試。');
+          });
+  }
+
+  function displayJudgeResults(data) {
+    const judgeResultsContainer = document.getElementById('judge-results');
+    const judgeName = localStorage.getItem("judgeName");
+    judgeResultsContainer.innerHTML = '';
+
+    // Title
+    const title = document.createElement('h6');
+    title.textContent = `各法官針對 ${judgeName} 的判決結果比率`;
+    judgeResultsContainer.insertBefore(title, judgeResultsContainer.firstChild);
+
+    // 遍歷每位法官的結果
+    data.forEach((result, index) => {
+        // 容器
+        const judgeResultContainer = document.createElement('div');
+        judgeResultContainer.classList.add('judge-results-container');
+
+        // 姓名與innerHTML區塊
+        const judgeNameContainer = document.createElement('div');
+        judgeNameContainer.classList.add('judge-name-container');
+        judgeNameContainer.innerHTML = `<ul><li>${result.judgeName} <br>- 原告方勝訴，被告方敗訴: ${result.winPercentage}%<br>- 原告方敗訴，被告方勝訴: ${result.losePercentage}%</li></ul>`;
+
+        // 環形圖區塊
+        const pieChartContainer = document.createElement('div');
+        pieChartContainer.classList.add('pie-chart-container');
+        const canvas = document.createElement('canvas');
+        pieChartContainer.appendChild(canvas);
+
+        // 添加姓名區塊和環形圖區塊到主容器
+        judgeResultContainer.appendChild(judgeNameContainer);
+        judgeResultContainer.appendChild(pieChartContainer);
+        judgeResultsContainer.appendChild(judgeResultContainer);
+
+        // 分隔線
+        if (index < data.length - 1) {
+            const divider = document.createElement('hr');
+            divider.style.border = 'none';
+            divider.style.height = '2px';
+            divider.style.width = '90%';
+            divider.style.opacity = '0.5';
+            divider.style.margin = '20px auto';
+            divider.style.backgroundColor = 'lightgray';
+            judgeResultsContainer.appendChild(divider);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    
+                    entry.target.classList.add('fade-in');
+
+                    
+                    const ctx = canvas.getContext('2d');
+                    const chart = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: ['原告方勝訴，被告方敗訴', '原告方敗訴，被告方勝訴'],
+                            datasets: [{
+                                data: [result.winPercentage, result.losePercentage],
+                                backgroundColor: ['#36A2EB', '#FF6384'],
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            cutoutPercentage: 50,
+                            animation: {
+                                duration: 2000,
+                                easing: 'easeOutCubic',
+                                animateRotate: true,
+                                animateScale: true,
+                                onComplete: function() {
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    position: 'right',
+                                    labels: {
+                                        usePointStyle: true,
+                                        pointStyle: 'circle',
+                                        padding: 15,
+                                        font: {
+                                            size: 13,
+                                            family: 'Arial',
+                                            weight: 'normal'
+                                        },
+                                        color: 'rgba(211, 211, 211, 1)',
+                                        boxWidth: 8,
+                                        boxHeight: 8
+                                    }
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function (tooltipItem) {
+                                            return tooltipItem.raw + '%';
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(judgeResultContainer);
+    });
+}
+
+// CSS
+const style = document.createElement('style');
+style.innerHTML = `
+    .judge-results-container {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .judge-results-container.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`;
+document.head.appendChild(style);
+    </script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </script>
+    <script>
+      window.addEventListener("load", checkLoginStatus);
+    </script>
+    <script src="./app2.js"></script>
+  </body>
+</html>

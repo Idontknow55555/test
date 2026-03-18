@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mr.Judger 帳號設定</title>
+    <script src="https://cdn.jsdelivr.net/npm/pica@latest/dist/pica.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      div.onlynav {
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        top: 0;
+        background-color: #000;
+        background-image: linear-gradient(94deg, #000, #531e63);
+        align-items: center;
+      }
+      @keyframes fadeInFromLeft {
+        from {
+          opacity: 0; 
+          transform: translateX(-20px); 
+        }
+        to {
+          opacity: 1; 
+          transform: translateX(0); 
+        }
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0; 
+        }
+        100% {
+          opacity: 0.9; 
+        }
+      }
+      @keyframes zoomIn {
+        from {
+          opacity: 0; 
+          transform: scale(0.9); 
+        }
+        to {
+          opacity: 1; 
+          transform: scale(1); 
+        }
+      }
+
+      @keyframes zoomOut {
+        from {
+          opacity: 1; 
+          transform: scale(1); 
+        }
+        to {
+          opacity: 0; 
+          transform: scale(0.9); 
+        }
+      }
+      
+      body {
+        margin: 0;
+        font-family: "Arial", sans-serif;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden; 
+        position: relative;
+        height: 100vh;
+        justify-content: center;
+        transition: background-color 0.5s ease, color 0.5s ease;
+      }
+
+      #video-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        opacity: 0.95;
+        z-index: -2;
+      }
+
+      .account-title {
+        position: absolute;
+        top: 70px;
+        left: 20px;
+        font-size: 36px;
+        font-weight: bold;
+        display: inline-block;
+        margin-left: 20px;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 146, 146, 0.8),
+          rgba(217, 150, 255, 0.8)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: fadeInFromLeft 0.8s ease-out;
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-evenly;
+        background-color: transparent;
+        margin-top: 10rem;
+        margin-left: 10%;
+        margin-right: 10%;
+      }
+
+      .settings-box {
+        width: 500px;
+        padding: 20px;
+        background-color: #2c2c2c;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        visibility: visible;
+        animation: fadeIn 0.6s ease-in-out forwards;
+      }
+
+      .left-box {
+        animation-delay: 0.2s;
+      }
+
+      .right-box {
+        animation-delay: 0.6s;
+      }
+
+      .settings-box:hover {
+        transform: scale(1.005); 
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); 
+      }
+
+      .settings-box h2 {
+        color: #bbb;
+        margin-top: 0px;
+        margin-bottom: 30px;
+        font-size: 28px;
+      }
+      .password-section,
+      .history-section {
+        margin-bottom: 20px;
+      }
+
+      .profile-pic-section {
+        margin-bottom: 20px;
+        text-align: center; 
+      }
+
+      .profile-pic-container {
+        display: inline-block;
+        margin-top: 10px; 
+      }
+     
+      #profile-pic-preview {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid #555;
+        transition: border-color 0.3s ease, transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      #profile-pic-preview:hover {
+        border-color: #bbb;
+        transform: scale(1.05); 
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); 
+      }
+
+      label {
+        font-size: 22px;
+        font-weight: bolder;
+        color: #bbb;
+      }
+
+      #upload-status {
+        font-size: 15px;
+        color: #888;
+        margin-top: 3px;
+        margin-bottom: 10px;
+      }
+
+      
+      .name-button-section {
+        width: 100%; 
+        text-align: center;
+      }
+
+      
+      #name-button {
+        width: 100%; 
+        padding: 10px;
+        background-color: transparent;
+        color: #fff;
+        border: 2px solid #bbb;
+        border-radius: 50px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      #name-button:hover {
+        transform: scale(1.05); 
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); 
+      }
+
+      #name {
+        font-size: 16px;
+        font-weight: bolder;
+        color: #bbb;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        outline: none;
+        cursor: pointer;
+      }
+
+     
+      button {
+        background-color: #3a3a3a;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease, transform 0.2s ease,
+          box-shadow 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #555;
+        transform: scale(1.05); 
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.6); 
+      }
+
+      button:active {
+        background-color: #222;
+        transform: translateY(0);
+      }
+
+      #change-password {
+        display: flex;
+        align-items: center; 
+        width: 100%;
+        font-weight: bolder;
+      }
+
+     
+      .password-icon {
+        width: 20px; 
+        height: 20px; 
+        margin-right: 10px; 
+      }
+
+      #view-history {
+        display: flex; 
+        align-items: center; 
+        width: 100%;
+        font-weight: bolder;
+      }
+
+      .history-icon {
+        width: 20px;
+        height: 20px; 
+        margin-right: 10px; 
+      }
+
+      #logout-button {
+        display: flex; 
+        align-items: center; 
+        background-color: #3a3a3a;
+        width: 100%;
+        font-weight: bolder;
+        animation-fill-mode: forwards;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .logout-icon {
+        width: 20px; 
+        height: 20px; 
+        margin-right: 10px; 
+      }
+
+      #logout-button:hover {
+        background-color: #c03a2bab;
+      }
+
+      #logout-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, #4b2a2a, #c03a2bab);
+        transition: all 0.3s ease-in-out;
+        z-index: -1;
+      }
+
+      #logout-button:hover::before {
+        left: 0;
+      }
+    
+      .modal {
+        display: none; 
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+        opacity: 1;
+        transition: opacity 0.3s ease;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+
+      .modal-content {
+        position: relative;
+        background-color: #2c2c2c;
+        margin: 15% auto;
+        padding: 20px;
+        border-radius: 8px;
+        width: 30%;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: scale(1); 
+        animation: zoomIn 0.3s ease-in-out; 
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+      }
+
+      h3 {
+        font-size: 20px;
+        color: #bbb;
+        margin-bottom: 0px;
+      }
+
+      p {
+        font-size: 15px;
+        color: #888;
+        margin-top: 3px;
+        margin-bottom: 30px;
+      }
+
+      #new-name {
+        width: 80%;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 50px;
+        font-size: 16px;
+        color: #bbb;
+        background-color: transparent;
+        margin-bottom: 20px;
+      }
+
+      #confirm-name {
+        padding: 10px 20px;
+        border: none;
+        border: 1.5px solid #bbb;
+        border-radius: 70px;
+        background-color: transparent;
+        color: white;
+        font-size: 16px;
+        font-weight: bolder;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease,
+          box-shadow 0.3s ease;
+      }
+
+      #confirm-name:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      #confirm-name:hover:not(:disabled) {
+        background-color: transparent;
+      }
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .modal2 {
+        display: none; 
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+        opacity: 1;
+        transition: opacity 0.3s ease;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+
+      .modal-content2 {
+        position: relative;
+        background-color: #2c2c2c;
+        margin: 15% auto;
+        padding: 20px;
+        border-radius: 8px;
+        width: 30%;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: scale(1); 
+        animation: zoomIn 0.3s ease-in-out; 
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+      }
+
+      #current-password {
+        width: 80%;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 50px;
+        font-size: 16px;
+        color: #bbb;
+        background-color: transparent;
+        margin-bottom: 20px;
+      }
+
+      #new-password {
+        width: 80%;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 50px;
+        font-size: 16px;
+        color: #bbb;
+        background-color: transparent;
+        margin-bottom: 20px;
+      }
+
+      #confirm-password {
+        padding: 10px 20px;
+        border: none;
+        border: 1.5px solid #bbb;
+        border-radius: 70px;
+        background-color: transparent;
+        color: white;
+        font-size: 16px;
+        font-weight: bolder;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease,
+          box-shadow 0.3s ease;
+      }
+      
+      #confirm-password:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      #confirm-password:hover:not(:disabled) {
+        background-color: transparent;
+      }
+
+      .close2 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close2:hover,
+      .close2:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .back-button {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; /* 添加平滑過渡效果 */
+      }
+      .back-button .icon {
+        margin-left: 20px;
+        margin-top: 10px;
+        width: 50px;
+        height: 50px;
+        color: #fff; 
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+      }
+
+      .back-button:hover .icon {
+        transform: scale(1.2); 
+        filter: drop-shadow(0 0 8px #fff); 
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="onlynav">
+      <a href="#" class="back-button" onclick="history.back()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon"
+        >
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </a>
+    </div>
+    <h1 class="account-title">Mr.Judger 帳號設定</h1>
+    <div class="container">
+      <div class="settings-box left-box">
+        <h2>基本資訊</h2>
+        <div class="profile-pic-section">
+          <label for="profile-pic">個人資料相片</label>
+          <p id="upload-status">新增個人資料相片有助於將帳戶個人化</p>
+          <div class="profile-pic-container">
+            <img
+              id="profile-pic-preview"
+              src="./images/profile.png"
+              alt="Profile Picture"
+            />
+            <input
+              type="file"
+              id="profile-pic"
+              accept=".png, .jpg, .jpeg"
+              style="display: none"
+            />
+          </div>
+        </div>
+
+        <div class="name-button-section">
+          <button id="name-button">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <input
+                type="text"
+                id="name"
+                style="border: none; background-color: transparent"
+                readonly
+              />
+              <span style="cursor: pointer">&#x276F;</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-box right-box">
+        <h2>隱私與安全性</h2>
+        <div class="password-section">
+          <button id="change-password">
+            <img
+              src="change-passwords.png"
+              alt="Change Password Icon"
+              class="password-icon"
+            />
+            變更密碼
+          </button>
+        </div>
+        <div class="history-section">
+          <button id="view-history">
+            <img
+              src="history.png"
+              alt="View History Icon"
+              class="history-icon"
+            />
+            查看歷史查詢紀錄
+          </button>
+        </div>
+        <div class="logout-section"></div>
+        <button id="logout-button">
+          <img src="log-out.png" alt="Log Out Icon" class="logout-icon" />
+          登出
+        </button>
+      </div>
+    </div>
+    <div id="change-password-modal" class="modal2">
+      <div class="modal-content2">
+        <span class="close2">&times;</span>
+        <h3>變更您的密碼</h3>
+        <p>請輸入您目前的密碼</p>
+        <input
+          type="password"
+          id="current-password"
+          placeholder="目前密碼"
+          autocomplete="off"
+        />
+        <p id="password-error" style="color: red; display: none">
+          密碼輸入錯誤，請重新輸入
+        </p>
+
+        <div id="new-password-section" style="display: none">
+          <p>請輸入新的密碼</p>
+          <input
+            type="password"
+            id="new-password"
+            placeholder="新密碼"
+            autocomplete="new-password"
+          />
+        </div>
+
+        <button id="confirm-password">確定</button>
+      </div>
+    </div>
+    <div id="name-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>嗨! 您想要我以後怎麼稱呼您呢?</h3>
+        <p>新的名稱不可超過12個字符</p>
+        <input type="text" id="new-name" maxlength="12" />
+        <p id="name-error" style="color: red; display: none">名稱長度過長!</p>
+        <button id="confirm-name" disabled>確定</button>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        checkLoginStatus();
+
+        const profilePicPreview = document.getElementById(
+          "profile-pic-preview"
+        );
+
+        profilePicPreview.addEventListener("click", () => {
+          profilePicInput.click(); 
+        });
+
+        const closeModalBtn = document.querySelector(".close");
+        const nameInput = document.getElementById("name");
+        const modal = document.getElementById("name-modal");
+
+        const nameButton = document.getElementById("name-button");
+        nameButton.addEventListener("click", () => {
+          modal.style.display = "block"; 
+          modal.style.animation = "fadeIn 0.3s ease-in-out";
+          document.querySelector(".modal-content").style.animation =
+            "zoomIn 0.3s ease-in-out";
+        });
+
+        function hideModal() {
+          modal.style.animation = "fadeOut 0.3s ease-in-out";
+          document.querySelector(".modal-content").style.animation =
+            "zoomOut 0.3s ease-in-out";
+          setTimeout(function () {
+            modal.style.display = "none";
+          }, 250); 
+        }
+
+        
+        closeModalBtn.addEventListener("click", () => {
+          hideModal();
+        });
+        closeModalBtn2.addEventListener("click", () => {
+          hideModal2();
+        });
+
+        window.addEventListener("click", function (event) {
+          if (event.target === modal) {
+            hideModal();
+          }
+        });
+
+        const newNameInput = document.getElementById("new-name");
+        const confirmButton = document.getElementById("confirm-name");
+        const nameError = document.getElementById("name-error");
+
+        newNameInput.addEventListener("input", () => {
+          const newName = newNameInput.value;
+          if (newName.length > 12) {
+            nameError.style.display = "block";
+            confirmButton.disabled = true;
+          } else {
+            nameError.style.display = "none";
+            confirmButton.disabled = newName.trim() === "";
+          }
+        });
+
+        confirmButton.addEventListener("click", async () => {
+          const newName = newNameInput.value.trim();
+          const userId = localStorage.getItem("userId");
+
+          if (newName && newName.length <= 12 && userId) {
+            const response = await fetch("http://localhost:3000/updateName", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ newName, userId }),
+            });
+
+            const result = await response.json();
+            if (result.success) {
+              localStorage.setItem("userName", newName);
+              window.location.reload();
+            } else {
+              alert("更新名稱失敗");
+            }
+          } else {
+            alert("名稱不符合要求或未登入");
+          }
+        });
+
+        const profilePicInput = document.getElementById("profile-pic");
+        profilePicInput.addEventListener("change", async () => {
+          const file = profilePicInput.files[0];
+          const userId = localStorage.getItem("userId");
+          if (file && userId) {
+            const reader = new FileReader();
+            reader.onload = function () {
+              const img = new Image();
+              img.onload = function () {
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d");
+                const width = img.width * 0.6; 
+                const height = img.height * 0.6;
+                canvas.width = width;
+                canvas.height = height;
+                ctx.drawImage(img, 0, 0, width, height);
+
+                const picaInstance = pica();
+                picaInstance
+                  .resize(canvas, canvas, { quality: 3 })
+                  .then(() => {
+                    const fileType = file.type || "image/png"; 
+                    const compressedImage = canvas.toDataURL(fileType);
+                    localStorage.setItem("userHeadshot", compressedImage);
+
+                    document.getElementById("upload-status").textContent =
+                      "個人相片變更成功";
+                    const profilePic = document.getElementById(
+                      "profile-pic-preview"
+                    );
+                    profilePic.src = compressedImage;
+
+                    const formData = new FormData();
+                    formData.append(
+                      "profile-pic",
+                      dataURLtoFile(
+                        compressedImage,
+                        "profile-pic." + fileType.split("/")[1]
+                      )
+                    );
+                    formData.append("userId", userId);
+
+                    return fetch("http://localhost:3000/uploadProfilePic", {
+                      method: "POST",
+                      body: formData,
+                    });
+                  })
+                  .then((response) => response.json())
+                  .then((result) => {
+                    if (result.success) {
+                      document.getElementById("upload-status").textContent =
+                        "個人相片變更成功";
+                    } else {
+                      document.getElementById("upload-status").textContent =
+                        "上傳失敗";
+                    }
+                  })
+                  .catch((err) => {
+                    console.error("Pica resize error:", err);
+                    document.getElementById("upload-status").textContent =
+                      "上傳失敗";
+                  });
+              };
+              img.src = reader.result;
+            };
+            reader.readAsDataURL(file);
+
+            document.getElementById("upload-status").textContent =
+              "個人相片上傳中，請稍後";
+          }
+        });
+      });
+
+      document
+        .getElementById("change-password")
+        .addEventListener("click", function () {
+          const modal2 = document.getElementById("change-password-modal");
+          modal2.style.display = "block"; // 顯示 Modal
+          modal2.style.animation = "fadeIn 0.3s ease-in-out";
+          document.querySelector(".modal-content2").style.animation =
+            "zoomIn 0.3s ease-in-out";
+        });
+
+      const modal2 = document.getElementById("change-password-modal");
+      const closeModalBtn2 = document.querySelector(".close2");
+      function hideModal2() {
+        modal2.style.animation = "fadeOut 0.3s ease-in-out";
+        document.querySelector(".modal-content2").style.animation =
+          "zoomOut 0.3s ease-in-out";
+        setTimeout(function () {
+          modal2.style.display = "none";
+        }, 250); 
+      }
+
+      closeModalBtn2.addEventListener("click", () => {
+        hideModal2();
+      });
+
+      window.addEventListener("click", function (event) {
+        if (event.target === modal2) {
+          hideModal2();
+        }
+      });
+
+      document
+        .getElementById("confirm-password")
+        .addEventListener("click", async function () {
+          const currentPassword =
+            document.getElementById("current-password").value;
+          const userId = localStorage.getItem("userId");
+          console.log("傳送給伺服器的數據:", { userId, currentPassword });
+          // Send current password to the backend for verification
+          const response = await fetch("http://localhost:3000/verifyPassword", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId, currentPassword }),
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            document.getElementById("new-password-section").style.display =
+              "block";
+            document.getElementById("password-error").style.display = "none";
+
+            const newPassword = document.getElementById("new-password").value;
+            if (newPassword) {
+              await fetch("http://localhost:3000/updatePassword", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ userId, newPassword }),
+              });
+              alert("密碼已成功變更");
+              document.getElementById("change-password-modal").style.display =
+                "none";
+            }
+          } else {
+            document.getElementById("password-error").style.display = "block";
+          }
+        });
+
+      function checkLoginStatus() {
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        const nameInput = document.getElementById("name");
+        const profilePic = document.getElementById("profile-pic-preview");
+        const userId = localStorage.getItem("userId");
+
+        if (isLoggedIn) {
+          const userName = localStorage.getItem("userName");
+          const userHeadshot =
+            localStorage.getItem("userHeadshot") || "./images/profile.png";
+          const userId = localStorage.getItem("userId");
+          nameInput.value = userName;
+          profilePic.src = userHeadshot;
+        } else {
+          alert("您尚未登入，請先登入以進行設定。");
+          window.location.href = "/homepage.html"; 
+        }
+      }
+
+      function logout() {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("userName");
+        localStorage.removeItem("userHeadshot");
+        localStorage.removeItem("userId");
+        window.location.href = "homepage.html";
+      }
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const historyButton = document.getElementById("view-history");
+
+        if (historyButton) {
+          historyButton.addEventListener("click", (event) => {
+            window.location.href = "historicalRecord.html";
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const logoutButton = document.getElementById("logout-button");
+
+        if (logoutButton) {
+          logoutButton.addEventListener("click", (event) => {
+            event.preventDefault(); 
+            logout(); 
+          });
+        }
+      });
+
+      function dataURLtoFile(dataURL, filename) {
+        const arr = dataURL.split(","),
+          mime = arr[0].match(/:(.*?);/)[1];
+        const bstr = atob(arr[1]);
+        const n = bstr.length;
+        const u8arr = new Uint8Array(n);
+
+        for (let i = 0; i < n; i++) {
+          u8arr[i] = bstr.charCodeAt(i);
+        }
+
+        return new File([u8arr], filename, { type: mime });
+      }
+    </script>
+
+    <video autoplay muted loop id="video-background">
+      <source src="Abstract Colorful Motion Background.mp4" type="video/mp4" />
+    </video>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>

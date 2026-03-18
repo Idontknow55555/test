@@ -1,2 +1,1 @@
-# zhanxuejin
-Config files for my GitHub profile.
+# Mr.judge判決書系統
