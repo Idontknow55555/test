@@ -1,7 +1,7 @@
 // script.js
 
-const API_KEY = 'AIzaSyAKIV3ZOU9fY3tkcoVdArKZ3udh7J07SD0';
-const API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${API_KEY}`;
+const API_KEY = 'your APL_KEY';
+const API_URL = `your API_URL`;
 
 document.getElementById('analyze-text-button').addEventListener('click', function() {
     const caseContent = document.getElementById('case-content').value;
